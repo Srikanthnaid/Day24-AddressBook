@@ -1,23 +1,42 @@
 package Day24.AddressBookSystem;
 
+import java.util.Scanner;
+
 public class AddressBook {
 
-	public void createContact() {
-		//directly pass the arguments.
-		ContactPerson person = new ContactPerson("Srikanth", "Naidu", "Alampur", "Hyderabad", "telangan",
-				"ksru044@gmail.com", 15263, "6301663090");
-		System.out.println("First Name: " + person.getFirstName());
-		System.out.println("Last Name: " + person.getLastName());
-		System.out.println("Address: " + person.getAddress());
-		System.out.println("City: " + person.getCity());
-		System.out.println("State: " + person.getState());
-		System.out.println("Email: " + person.getEmail());
-		System.out.println("Zip Code: " + person.getZipCode());
-		System.out.println("Phone Number: " + person.getPhoneNumber());
-		System.out.println("Contact created successfully.....");
+	// create a object of Contactperson class
+	ContactPerson person = new ContactPerson();
+	// create scanner class for take input from console.
+	Scanner sc = new Scanner(System.in);
 
+	public ContactPerson createContact() {
+		//Taken from user.
+		System.out.print("Enter First Name: ");
+		person.setFirstName(sc.next());
+		System.out.print("Enter Last Name: ");
+		person.setLastName(sc.next());
+		System.out.print("Enter Address: ");
+		person.setAddress(sc.next());
+		System.out.print("Enter City: ");
+		person.setCity(sc.next());
+		System.out.print("Enter State: ");
+		person.setState(sc.next());
+		System.out.print("Enter email: ");
+		person.setEmail(sc.next());
+		System.out.print("Enter ZipCode: ");
+		person.setZipCode(sc.nextInt());
+		System.out.print("Enter Phone Number: ");
+		person.setPhoneNumber(sc.next());
+		System.out.println("created new contact");
+		return person;
 	}
-	//main mathod
+	public void addContact() {
+		ContactPerson contactPerson = createContact();
+        System.out.println(contactPerson);
+        System.out.println("Contact added successfully");
+    }
+
+	// main mathod
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book program");
 		System.out.println("--------------------------");
