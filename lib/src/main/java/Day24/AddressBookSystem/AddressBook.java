@@ -3,7 +3,8 @@ package Day24.AddressBookSystem;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-//uc5 - > multiple contacts add to addressbook.
+
+//uc6 
 public class AddressBook {
 	// create list.
 	static List<ContactPerson> list = new ArrayList<>();
@@ -138,18 +139,32 @@ public class AddressBook {
 		System.out.println("--------------------------");
 		System.out.println("Contact created in address book is: ");
 		AddressBook book = new AddressBook();
-		boolean flag1 = true;
+		MultipleAddressBooks obj = new MultipleAddressBooks();
 		while (true) {
-			System.out.println(
-					"Enter 1.to add new contact \nEnter 2.to editContacts  \nEnter 3.to DeleteContact \nEnter 4.to addmultiplecontact  \nEnter5.to Exit");
-			int getUserInput = sc.nextInt();
-			switch (getUserInput) {
-			case 1 -> book.addContact();
-			case 2 -> book.editContact();
-			case 3 -> book.deleteContact(list);
-			case 4 -> book.addMultipleContacts(list);
-			case 5 -> System.exit(0);
-			default -> System.out.println("invalid input");
+			System.out.println("Enter \n 1. To add The new AddressBook\n 2. To add contact in AddressBook\n "
+					+ "3. To edit the contact in AddressBook\n 4. To delete the contact in AddressBook\n 5. To delete the AddressBook\n "
+					+ "6. To Print the AddressBook\n 7. To Print the contacts in AddressBook\n 0. to exit");
+			Scanner scanner = new Scanner(System.in);
+			int choice = scanner.nextInt();
+			switch (choice) {
+			case 1 -> obj.addAddressBook();
+
+			case 2 -> obj.addContact();
+
+			case 3 -> obj.editContactInBook();
+
+			case 4 -> obj.deleteContactInBook();
+
+			case 5 -> obj.deleteAddressBook();
+
+			case 6 -> obj.printBook();
+
+			case 7 -> obj.printContactsInBook();
+
+			case 0 -> System.exit(0);
+
+			default -> System.out.println("Enter the wrong input");
+
 			}
 		}
 	}
