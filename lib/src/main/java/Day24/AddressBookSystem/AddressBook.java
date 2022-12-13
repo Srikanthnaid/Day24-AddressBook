@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class AddressBook {
 	// create list.
-	List<ContactPerson> list = new ArrayList<>();
+	static List<ContactPerson> list = new ArrayList<>();
 
 	// create a object of Contactperson class
 	ContactPerson person = new ContactPerson();
@@ -108,6 +108,21 @@ public class AddressBook {
 		}
 		list.stream().forEach(a -> System.out.println(a));
 	}
+	//delete contact.
+	public void deleteContact(List<ContactPerson> list) {
+		System.out.print("Enter First Name:");
+		String Name = sc.next();
+		boolean result = list.stream().anyMatch(a -> list.contains(Name) == equals(list));
+		System.out.println(result);//true
+		if(true) {
+			list.remove(person);
+		}
+		System.out.println("delete successfully");
+		System.out.println(list);
+		if(!true) {
+			System.out.println("Name not existing in Addressbook");
+		}
+	}
 
 	// main mathod
 	public static void main(String[] args) {
@@ -117,6 +132,6 @@ public class AddressBook {
 		AddressBook book = new AddressBook();
 		book.addContact();// call add contact method
 		book.editContact();// call edit contact method to edit a contact in addressbook
-
+		book.deleteContact(list);
 	}
 }
