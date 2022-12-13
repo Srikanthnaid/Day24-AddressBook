@@ -3,7 +3,7 @@ package Day24.AddressBookSystem;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+//uc5 - > multiple contacts add to addressbook.
 public class AddressBook {
 	// create list.
 	static List<ContactPerson> list = new ArrayList<>();
@@ -11,7 +11,7 @@ public class AddressBook {
 	// create a object of Contactperson class
 	ContactPerson person = new ContactPerson();
 	// create scanner class for take input from console.
-	Scanner sc = new Scanner(System.in);
+	static Scanner sc = new Scanner(System.in);
 
 	public ContactPerson createContact() {
 		// Taken from user.
@@ -108,20 +108,28 @@ public class AddressBook {
 		}
 		list.stream().forEach(a -> System.out.println(a));
 	}
-	//delete contact.
+
+	// delete contact.
 	public void deleteContact(List<ContactPerson> list) {
 		System.out.print("Enter First Name:");
 		String Name = sc.next();
 		boolean result = list.stream().anyMatch(a -> list.contains(Name) == equals(list));
-		System.out.println(result);//true
-		if(true) {
+		System.out.println(result);// true
+		if (true) {
 			list.remove(person);
 		}
 		System.out.println("delete successfully");
 		System.out.println(list);
-		if(!true) {
+		if (!true) {
 			System.out.println("Name not existing in Addressbook");
 		}
+	}
+
+	// add multiple contacts.
+	public void addMultipleContacts(List<ContactPerson> list) {
+		// call the addContact method.
+		addContact();
+
 	}
 
 	// main mathod
@@ -130,8 +138,19 @@ public class AddressBook {
 		System.out.println("--------------------------");
 		System.out.println("Contact created in address book is: ");
 		AddressBook book = new AddressBook();
-		book.addContact();// call add contact method
-		book.editContact();// call edit contact method to edit a contact in addressbook
-		book.deleteContact(list);
+		boolean flag1 = true;
+		while (true) {
+			System.out.println(
+					"Enter 1.to add new contact \nEnter 2.to editContacts  \nEnter 3.to DeleteContact \nEnter 4.to addmultiplecontact  \nEnter5.to Exit");
+			int getUserInput = sc.nextInt();
+			switch (getUserInput) {
+			case 1 -> book.addContact();
+			case 2 -> book.editContact();
+			case 3 -> book.deleteContact(list);
+			case 4 -> book.addMultipleContacts(list);
+			case 5 -> System.exit(0);
+			default -> System.out.println("invalid input");
+			}
+		}
 	}
 }
